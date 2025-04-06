@@ -1,0 +1,21 @@
+declare type transportType = "სედანი" | "ჯიპი" | "მოტოციკლეტი" | "ფურგონი";
+
+declare type TransportTypeCardTypes = {
+  transportType: transportType;
+  text: string;
+  image: any;
+  styles: {
+    bg: string;
+  };
+};
+
+declare type PlanCardProps = {
+  distance: number;
+  arrivalTime: string;
+  service: string;
+  price: number;
+  fromLocation: string;
+  toLocation: string;
+  bgColor?: string;
+  iconColor?: string;
+};
