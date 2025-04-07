@@ -15,14 +15,15 @@ const TransportType = () => {
         </p>
       </div>
 
-      <div className="mt-[46px] grid grid-cols-2 gap-6">
+      <div className="mt-[46px] grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
         {transportOptions.map((option, index) => (
           <TransportTypeCard
-            key={index}
+            key={option.id}
             transportType={option.transportType as transportType}
             text={option.text}
             image={option.image}
             styles={option.styles}
+            id={option.id}
           />
         ))}
       </div>

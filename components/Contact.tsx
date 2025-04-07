@@ -1,10 +1,9 @@
 import { contactOptions } from "@/constants"; // Import the contact options array
 import Image from "next/image";
-import React from "react";
 
 const Contact = () => {
   return (
-    <section className="max-w-7xl mx-auto bg-[#F9F5FF] py-20">
+    <section className="max-w-7xl mx-auto bg-[#F9F5FF] py-20 relative bg-grid-dot px-4">
       <div className="flex flex-col gap-2 text-center">
         <h3 className="text-[#252324] text-[36px] font-semibold">
           ჩვენ სიამოვნებით მოგისმენთ
@@ -14,9 +13,12 @@ const Contact = () => {
         </p>
       </div>
 
-      <div className="flex items-center gap-8 mt-16">
+      <div className="flex flex-col md:flex-row items-center gap-5 md:gap-8 mt-16">
         {contactOptions.map((option, index) => (
-          <div key={index} className="flex-1 p-6 bg-[#FFFFFF] rounded-2xl">
+          <div
+            key={index}
+            className="flex-1 w-full p-6 bg-[#FFFFFF] rounded-2xl"
+          >
             <div className="flex flex-col gap-6">
               <div className="w-9 h-9 bg-[#EEE1FE] rounded-full flex items-center justify-center">
                 <Image src={option.icon} width={24} height={24} alt="icon" />

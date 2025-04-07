@@ -62,7 +62,7 @@ const PrivateDetailsForm = ({
           )}
         />
 
-        <div className="flex items-start gap-4">
+        <div className="w-full flex flex-col sm:flex-row sm:items-start gap-4">
           <div className="flex-1">
             <FormField
               control={form.control}

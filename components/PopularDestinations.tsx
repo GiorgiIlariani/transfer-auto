@@ -3,7 +3,7 @@ import PlanCard from "./PlanCard";
 
 const PopularDestinations = () => {
   return (
-    <section className="w-full bg-[#F9F5FF] py-20">
+    <section className="relative bg-grid-dot w-full bg-[#F9F5FF] py-20 px-4">
       <div className="flex flex-col gap-2 text-center">
         <h3 className="text-[#252324] text-[36px] font-semibold">
           პოპულარული მიმართულებები
@@ -14,7 +14,7 @@ const PopularDestinations = () => {
         </p>
       </div>
 
-      <div className="mt-[42px] flex items-center gap-8">
+      <div className="mt-[42px] flex flex-col md:flex-row w-full gap-5 items-center md:gap-8">
         <PlanCard
           fromLocation="ფოთი"
           toLocation="თბილისი"

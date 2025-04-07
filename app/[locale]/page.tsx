@@ -13,9 +13,9 @@ const MainPage = () => {
         <TransportType />
       </div>
 
-      {/* Full-width background for PopularDestinations */}
-      <div className="bg-[#F9F5FF] w-full">
-        <div className="max-w-7xl mx-auto">
+      {/* Full-width background with grid dots & radial mask */}
+      <div className="bg-[#F9F5FF] w-full bg-mask-radial-sides bg-grid-dot relative overflow-hidden">
+        <div className="max-w-7xl mx-auto ">
           <PopularDestinations />
         </div>
       </div>
@@ -24,7 +24,7 @@ const MainPage = () => {
         <WhyUs />
       </div>
 
-      <div className="bg-[#F9F5FF] w-full">
+      <div className="bg-[#F9F5FF] w-full bg-mask-radial-sides bg-grid-dot relative">
         <div className="max-w-7xl mx-auto">
           <Contact />
         </div>

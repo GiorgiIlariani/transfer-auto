@@ -9,7 +9,7 @@ const NavItems = () => {
   const pathname = usePathname();
 
   return (
-    <nav className="flex gap-4">
+    <nav className="hidden md:flex gap-4">
       {navLinks.map(({ label, href }) => {
         const isActive = pathname === href;
 

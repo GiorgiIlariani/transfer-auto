@@ -7,6 +7,7 @@ declare type TransportTypeCardTypes = {
   styles: {
     bg: string;
   };
+  id: number;
 };
 
 declare type PlanCardProps = {

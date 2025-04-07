@@ -16,7 +16,7 @@ const PlanCard = ({
   iconColor = "#0A69FA",
 }: PlanCardProps) => {
   return (
-    <div className="max-w-[405px] flex-1 p-5 bg-white rounded-lg shadow-md space-y-6">
+    <div className="w-[343px] md:w-[405px] flex-1 p-5 bg-white rounded-lg shadow-md space-y-6">
       <div
         className="flex items-center justify-between  px-5 py-4 rounded-[12px] relative"
         style={{
@@ -26,7 +26,7 @@ const PlanCard = ({
         <div className="w-full flex flex-col gap-2">
           <div className="w-full flex justify-between items-center">
             <div className="flex flex-col gap-2 items-center">
-              <div className="w-[54px] h-[54px] rounded-full bg-[#FFFFFF] flex items-center justify-center">
+              <div className="z-5 w-[54px] h-[54px] rounded-full bg-[#FFFFFF] flex items-center justify-center">
                 <TiLocation
                   size={26}
                   style={{
@@ -36,17 +36,29 @@ const PlanCard = ({
               </div>
             </div>
 
-            <div
-              className="w-[26px] h-[26px] rounded-full text-white flex items-center justify-center"
-              style={{
-                backgroundColor: iconColor,
-              }}
-            >
-              <LuArrowRight size={20} />
+            <div className="flex-1 relative">
+              {/* Dashed Line with increased width and space between dashes */}
+              <div
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 w-[calc(100%+2rem)] h-[2px]"
+                style={{
+                  backgroundImage: `linear-gradient(to right, ${iconColor} 50%, rgba(255,255,255,0) 0%)`, // Use iconColor for dashed line
+                  backgroundPosition: "bottom",
+                  backgroundSize: "15px 1px", // Adjust the size for more or less space
+                  backgroundRepeat: "repeat-x",
+                }}
+              />
+
+              {/* Arrow centered on the dashed line */}
+              <div
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[26px] h-[26px] rounded-full text-white flex items-center justify-center"
+                style={{ backgroundColor: iconColor }}
+              >
+                <LuArrowRight size={20} />
+              </div>
             </div>
 
             <div className="flex flex-col gap-2 items-center">
-              <div className="w-[54px] h-[54px] rounded-full bg-[#FFFFFF] flex items-center justify-center">
+              <div className="z-5 w-[54px] h-[54px] rounded-full bg-[#FFFFFF] flex items-center justify-center">
                 <TiLocation
                   size={26}
                   style={{

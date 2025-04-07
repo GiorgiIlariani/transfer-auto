@@ -8,24 +8,28 @@ export const navLinks = [
 
 export const transportOptions = [
   {
+    id: 1,
     transportType: "სედანი",
     text: "დროული მიწოდება რეალურ დროში თვალყურის დევნება თქვენი სიმშვიდისთვის",
     image: "/assets/sedan.png",
     styles: { bg: "#D7F5E5" },
   },
   {
+    id: 2,
     transportType: "მოტოციკლი",
     text: "დროული მიწოდება რეალურ დროში თვალყურის დევნება თქვენი სიმშვიდისთვის",
     image: "/assets/motorcycle.png",
     styles: { bg: "#EEE1FE" },
   },
   {
+    id: 3,
     transportType: "ჯიპი",
     text: "დროული მიწოდება რეალურ დროში თვალყურის დევნება თქვენი სიმშვიდისთვის",
     image: "/assets/jeep.png",
     styles: { bg: "#FFE9E3" },
   },
   {
+    id: 4,
     transportType: "ფურგონი",
     text: "დროული მიწოდება რეალურ დროში თვალყურის დევნება თქვენი სიმშვიდისთვის",
     image: "/assets/van.png",

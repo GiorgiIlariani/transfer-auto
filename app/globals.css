@@ -120,3 +120,66 @@
     @apply bg-background text-foreground;
   }
 }
+
+@theme {
+  --breakpoint-xs: 500px;
+}
+
+@font-face {
+  font-family: "FiraGo";
+  src: url("/fonts/firago-latin-400-normal.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "FiraGo";
+  src: url("/fonts/firago-latin-500-normal.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "FiraGo";
+  src: url("/fonts/firago-latin-600-normal.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "FiraGo";
+  src: url("/fonts/firago-latin-700-normal.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+
+body {
+  font-family: "FiraGo";
+}
+
+.bg-grid-dot {
+  background-image: radial-gradient(#d6bbfb 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Apply mask only until md */
+.bg-mask-radial-sides {
+  mask-image: radial-gradient(ellipse at center, black 70%, transparent 100%);
+  mask-repeat: no-repeat;
+  mask-size: 100% 100%;
+  -webkit-mask-image: radial-gradient(
+    ellipse at center,
+    black 60%,
+    transparent 100%
+  );
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+}
+
+/* Remove mask starting at md breakpoint */
+@media (max-width: 768px) {
+  .bg-mask-radial-sides {
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+}

@@ -19,8 +19,8 @@ export function ReservationModal() {
   >("select");
 
   return (
-    <DialogContent className="bg-white min-w-[700px] min-h-[600px] h-auto rounded-[10px] p-6">
-      <DialogTitle className="text-left text-base text-[#101828] pb-6 font-medium">
+    <DialogContent className="bg-white min-w-screen h-screen mt-[45px] md:mt-0 sm:min-w-[640px] sm:min-h-[600px] sm:h-auto rounded-[10px] p-6">
+      <DialogTitle className="text-left text-base text-[#101828] pb-0 md:pb-6 font-medium max-h-[60px]">
         სერვისის დაჯავშნა
       </DialogTitle>
 
@@ -78,7 +78,7 @@ export function ReservationModal() {
 
           <div className="flex justify-end mt-10">
             <Button
-              className="h-12 bg-[#6A04FE] text-white text-base font-medium px-6 py-4 rounded-full"
+              className="h-12 bg-[#6A04FE] text-white text-base font-medium px-6 py-4 rounded-full mt-10"
               onClick={() => setStep("details")}
             >
               გაგრძელება
@@ -206,6 +206,7 @@ export function ReservationModal() {
               <Button
                 type="submit"
                 className="h-12 bg-[#6A04FE] text-white text-base font-medium px-6 py-4 rounded-full"
+                onClick={() => setStep("confirmation")}
               >
                 გაგრძელება
               </Button>
