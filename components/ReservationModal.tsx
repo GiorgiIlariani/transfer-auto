@@ -103,7 +103,7 @@ export function ReservationModal() {
 
             <div className="flex justify-end mt-10">
               <Button
-                className="h-12 bg-[#6A04FE] text-white text-base font-medium px-6 py-4 rounded-full mt-10"
+                className="h-12 bg-[#6A04FE] hover:bg-[#6A04FE] cursor-pointer text-white text-base font-medium px-6 py-4 rounded-full mt-10"
                 onClick={() => setStep("direction")}
               >
                 გაგრძელება
@@ -162,7 +162,7 @@ export function ReservationModal() {
                   უკან
                 </Button>
                 <Button
-                  className="h-12 bg-[#6A04FE] text-white text-base font-medium px-6 py-4 rounded-full disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="h-12 bg-[#6A04FE] hover:bg-[#6A04FE] cursor-pointer text-white text-base font-medium px-6 py-4 rounded-full disabled:opacity-50 disabled:cursor-not-allowed"
                   onClick={() => setStep("details")}
                   disabled={!selectedDirection}
                 >
@@ -293,7 +293,7 @@ export function ReservationModal() {
                 </Button>
                 <Button
                   type="submit"
-                  className="h-12 bg-[#6A04FE] text-white text-base font-medium px-6 py-4 rounded-full"
+                  className="h-12 bg-[#6A04FE] hover:bg-[#6A04FE] cursor-pointer text-white text-base font-medium px-6 py-4 rounded-full"
                   onClick={() => setStep("confirmation")}
                 >
                   გაგრძელება
