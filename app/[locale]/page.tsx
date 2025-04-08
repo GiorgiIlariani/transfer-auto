@@ -14,7 +14,7 @@ const MainPage = () => {
       </div>
 
       {/* Full-width background with grid dots & radial mask */}
-      <div className="bg-[#F9F5FF] w-full bg-mask-radial-sides bg-grid-dot relative overflow-hidden">
+      <div className="bg-[#F9F5FF] w-full  bg-grid-dot relative overflow-hidden">
         <div className="max-w-7xl mx-auto ">
           <PopularDestinations />
         </div>

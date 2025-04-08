@@ -37,7 +37,7 @@ export function ReservationModal() {
   );
 
   return (
-    <DialogContent className="bg-white min-w-screen h-screen mt-[45px] sm:min-w-[640px] sm:min-h-[600px] sm:h-auto rounded-[10px] p-6 flex flex-col max-h-[90vh]">
+    <DialogContent className="bg-white min-w-screen h-screen mt-[25px] md:mt-0 sm:min-w-[640px] sm:min-h-[600px] sm:h-auto rounded-[10px] p-6 flex flex-col max-h-[95vh]">
       <DialogClose>
         <div className="w-full flex justify-center sm:hidden cursor-pointer">
           <Image src="/assets/drag.png" alt="drag" width={48} height={5} />

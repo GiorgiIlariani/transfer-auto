@@ -34,7 +34,7 @@ const Hero = async () => {
         </div>
 
         {/* Blur Overlay for both sides */}
-        <div className="absolute md:hidden left-0 top-0 h-full w-[150px] bg-gradient-to-r from-white to-transparent z-20 pointer-events-none" />
+        <div className="absolute left-0 top-0 h-full w-[150px] bg-gradient-to-r from-white to-transparent z-20 pointer-events-none" />
         <div className="absolute right-0 top-0 h-full w-[150px] bg-gradient-to-l from-white to-transparent z-20 pointer-events-none" />
       </div>
     </section>

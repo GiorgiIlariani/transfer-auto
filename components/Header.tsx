@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import NavItems from "./NavItems";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import MobileNav from "./MobileNav";
@@ -9,9 +9,13 @@ import { navLinks } from "@/constants";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { useTranslations } from "next-intl";
 import { Link } from "react-scroll";
+import clsx from "clsx"; // optional: for className conditionally
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [showHeader, setShowHeader] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
   const t = useTranslations("Header.navLinks");
 
   const translatedNavLinks = navLinks.map((link) => ({
@@ -19,8 +23,33 @@ const Header = () => {
     label: t(link.id),
   }));
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > lastScrollY && currentScrollY > 80) {
+        // scrolling down
+        setShowHeader(false);
+      } else {
+        // scrolling up
+        setShowHeader(true);
+      }
+
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
+
   return (
-    <div className="fixed top-0 left-0 w-full z-30">
+    <div
+      className={clsx(
+        "fixed top-0 left-0 w-full z-30 transition-transform duration-300",
+        showHeader ? "translate-y-0" : "-translate-y-full"
+      )}
+    >
       <header className="w-full py-5 bg-white bg-opacity-90 px-4">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <Link to="home" smooth={true} duration={500}>

@@ -15,6 +15,7 @@ const NavItems = () => {
 
         return (
           <Link
+            key={href}
             to={href}
             smooth={true}
             duration={500}
