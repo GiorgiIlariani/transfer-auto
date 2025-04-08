@@ -52,22 +52,23 @@ const Header = () => {
         <div className="w-full bg-white md:hidden">
           <nav className="flex flex-col max-w-7xl mx-auto py-5">
             {translatedNavLinks.map(({ label, href }) => (
-              <div
+              <Link
                 className="flex items-center justify-between hover:bg-[#F0EDFF] text-[#252324] hover:text-[#6A04FE] transition-colors cursor-pointer px-4"
                 key={label}
+                to={href}
+                smooth={true}
+                duration={500}
               >
-                <a
-                  key={href}
-                  href={href}
+                <span
                   className="py-3 rounded-[99px] text-base font-medium"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {label}
-                </a>
+                </span>
                 <div className="w-4 h-4 items-center justify-center flex">
                   <MdKeyboardArrowRight size={16} />
                 </div>
-              </div>
+              </Link>
             ))}
           </nav>
           <div className="w-full border-t border-[#E9EAEB] px-4 py-6">

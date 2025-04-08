@@ -17,6 +17,8 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea"; // Make sure you have this component
 import { Dispatch, SetStateAction } from "react";
+import { addDoc, collection } from "firebase/firestore";
+import { db } from "@/lib/firebase";
 
 const PrivateDetailsForm = ({
   setStep,
@@ -37,9 +39,23 @@ const PrivateDetailsForm = ({
     },
   });
 
-  function onSubmit(values: z.infer<typeof privateDetailsFormSchema>) {
-    console.log(values);
-    setStep("summary");
+  async function onSubmit(values: z.infer<typeof privateDetailsFormSchema>) {
+    const bookingData = {
+      fullName: values.name,
+      email: values.email,
+      phone: values.mobile,
+      carDetails: values.message,
+      // transportType,
+      // destination,
+      createdAt: new Date(),
+    };
+    try {
+      await addDoc(collection(db, "bookings"), bookingData);
+      setStep("summary");
+    } catch (error) {
+      console.error("Error saving to Firebase:", error);
+      alert("შეცდომა მონაცემების შენახვისას.");
+    }
   }
 
   return (
@@ -135,7 +151,7 @@ const PrivateDetailsForm = ({
             <Button
               type="submit"
               className="h-12 text-[#6A04FE] bg-transparent hover:bg-transparent cursor-pointer text-base font-medium px-6 py-4 rounded-full"
-              onClick={() => setStep("select")}
+              onClick={() => setStep("direction")}
             >
               უკან
             </Button>

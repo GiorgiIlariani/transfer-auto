@@ -155,13 +155,14 @@ export function ReservationModal() {
               <Button
                 type="submit"
                 className="h-12 text-[#6A04FE] bg-transparent hover:bg-transparent cursor-pointer text-base font-medium px-6 py-4 rounded-full"
-                onClick={() => setStep("details")}
+                onClick={() => setStep("select")}
               >
                 უკან
               </Button>
               <Button
-                className="h-12 bg-[#6A04FE] text-white text-base font-medium px-6 py-4 rounded-full"
+                className="h-12 bg-[#6A04FE] text-white text-base font-medium px-6 py-4 rounded-full disabled:opacity-50 disabled:cursor-not-allowed"
                 onClick={() => setStep("details")}
+                disabled={!selectedDirection}
               >
                 გაგრძელება
               </Button>
