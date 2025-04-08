@@ -22,7 +22,9 @@ const PrivateDetailsForm = ({
   setStep,
 }: {
   setStep: Dispatch<
-    SetStateAction<"details" | "select" | "summary" | "confirmation">
+    SetStateAction<
+      "details" | "direction" | "select" | "summary" | "confirmation"
+    >
   >;
 }) => {
   const form = useForm<z.infer<typeof privateDetailsFormSchema>>({

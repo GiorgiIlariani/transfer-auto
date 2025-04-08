@@ -20,3 +20,8 @@ declare type PlanCardProps = {
   bgColor?: string;
   iconColor?: string;
 };
+
+declare interface SearchDirectionProps {
+  query: string;
+  setQuery: React.Dispatch<React.SetStateAction<string>>;
+}

@@ -1,9 +1,9 @@
 export const navLinks = [
-  { label: "მთავარი", href: "/" },
-  { label: "სერვისები", href: "/services" },
-  { label: "მიმართულებები", href: "/directions" },
-  { label: "რატომ ჩვენ", href: "/why-us" },
-  { label: "კონტაქტი", href: "/contact" },
+  { label: "Home", href: "home", id: "home" },
+  { label: "Services", href: "services", id: "services" },
+  { label: "Routes", href: "directions", id: "routes" },
+  { label: "Why Us", href: "why-us", id: "whyUs" },
+  { label: "Contact", href: "contact", id: "contact" },
 ];
 
 export const transportOptions = [
@@ -109,5 +109,32 @@ export const transports = [
     label: "ფურგონი",
     desc: "ოთხი კარები და განახლებული სალონი",
     icon: "/assets/van.png",
+  },
+];
+
+export const directions = [
+  {
+    id: 1,
+    from: "ფოთი",
+    to: "თბილისი",
+    distance: 350,
+  },
+  {
+    id: 2,
+    from: "ქუთაისი",
+    to: "თბილისი",
+    distance: 350,
+  },
+  {
+    id: 3,
+    from: "ფოთი",
+    to: "ქუთაისი",
+    distance: 350,
+  },
+  {
+    id: 4,
+    from: "გორი",
+    to: "თბილისი",
+    distance: 350,
   },
 ];

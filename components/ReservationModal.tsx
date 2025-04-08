@@ -1,25 +1,48 @@
-import { DialogContent, DialogTitle } from "@/components/ui/dialog";
+import {
+  DialogClose,
+  DialogContent,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { CheckCircle2 } from "lucide-react";
 import clsx from "clsx";
 import Image from "next/image";
-import { transports } from "@/constants";
+import { directions, transports } from "@/constants";
 import PrivateDetailsForm from "./PrivateDetailsForm";
 import { TiLocation } from "react-icons/ti";
 import { IoPerson } from "react-icons/io5";
 import { MdEmail } from "react-icons/md";
 import { FaPhone } from "react-icons/fa6";
 import { calculateProgress, SummaryItem } from "@/utils";
+import SearchDirection from "./SearchDirection";
 
 export function ReservationModal() {
   const [selected, setSelected] = useState("sedan");
+  const [selectedDirection, setSelectedDirection] = useState<string | null>(
+    null
+  );
+
   const [step, setStep] = useState<
-    "select" | "details" | "confirmation" | "summary"
+    "select" | "direction" | "details" | "confirmation" | "summary"
   >("select");
 
+  const [query, setQuery] = useState("");
+
+  // Filter directions based on query
+  const filteredDirections = directions.filter(
+    (direction) =>
+      direction.from.toLowerCase().includes(query.toLowerCase()) ||
+      direction.to.toLowerCase().includes(query.toLowerCase())
+  );
+
   return (
-    <DialogContent className="bg-white min-w-screen h-screen mt-[45px] md:mt-0 sm:min-w-[640px] sm:min-h-[600px] sm:h-auto rounded-[10px] p-6">
+    <DialogContent className="bg-white min-w-screen h-screen mt-[45px] sm:min-w-[640px] sm:min-h-[600px] sm:h-auto rounded-[10px] p-6 flex flex-col">
+      <DialogClose>
+        <div className="w-full flex justify-center sm:hidden cursor-pointer">
+          <Image src="/assets/drag.png" alt="drag" width={48} height={5} />
+        </div>
+      </DialogClose>
       <DialogTitle className="text-left text-base text-[#101828] pb-0 md:pb-6 font-medium max-h-[60px]">
         სერვისის დაჯავშნა
       </DialogTitle>
@@ -79,10 +102,70 @@ export function ReservationModal() {
           <div className="flex justify-end mt-10">
             <Button
               className="h-12 bg-[#6A04FE] text-white text-base font-medium px-6 py-4 rounded-full mt-10"
-              onClick={() => setStep("details")}
+              onClick={() => setStep("direction")}
             >
               გაგრძელება
             </Button>
+          </div>
+        </div>
+      )}
+
+      {step === "direction" && (
+        <div className="w-full">
+          <h2 className="text-left text-base text-[#101828] pb-6 font-medium">
+            არჩიე მიმართულება
+          </h2>
+          <SearchDirection query={query} setQuery={setQuery} />
+
+          <div className="flex flex-col gap-3 max-h-[328px] overflow-y-auto hide-scrollbar mt-4">
+            {filteredDirections.map((direction) => (
+              <div
+                key={direction.from + direction.to}
+                onClick={() =>
+                  setSelectedDirection(direction.from + direction.to)
+                }
+                className={clsx(
+                  "flex items-center gap-4 p-4 rounded-[16px] border cursor-pointer transition",
+                  selectedDirection === direction.from + direction.to
+                    ? "border-[#6A04FE] bg-[#F6F1FF]"
+                    : "border-[#EAECF0]"
+                )}
+              >
+                <div className="bg-[#F1F1F1] w-12 h-12 rounded-full flex items-center justify-center">
+                  <TiLocation size={20} />
+                </div>
+
+                <div className="flex flex-col gap-1">
+                  <div className="flex items-center gap-2 text-base text-[#252324] font-medium">
+                    <span>{direction.from}</span>-<span>{direction.to}</span>
+                  </div>
+                  <p className="text-sm font-normal text-[#6E7375]">
+                    მანძილი: {direction.distance}
+                  </p>
+                </div>
+
+                {selectedDirection === direction.from + direction.to && (
+                  <CheckCircle2 className="ml-auto text-[#7933FF]" />
+                )}
+              </div>
+            ))}
+          </div>
+          <div className="flex justify-end pt-10 border-t border-[#E5F0FF]">
+            <div className="flex items-center gap-3">
+              <Button
+                type="submit"
+                className="h-12 text-[#6A04FE] bg-transparent hover:bg-transparent cursor-pointer text-base font-medium px-6 py-4 rounded-full"
+                onClick={() => setStep("details")}
+              >
+                უკან
+              </Button>
+              <Button
+                className="h-12 bg-[#6A04FE] text-white text-base font-medium px-6 py-4 rounded-full"
+                onClick={() => setStep("details")}
+              >
+                გაგრძელება
+              </Button>
+            </div>
           </div>
         </div>
       )}

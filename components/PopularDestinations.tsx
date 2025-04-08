@@ -3,7 +3,10 @@ import PlanCard from "./PlanCard";
 
 const PopularDestinations = () => {
   return (
-    <section className="relative bg-grid-dot w-full bg-[#F9F5FF] py-20 px-4">
+    <section
+      className="relative bg-grid-dot w-full bg-[#F9F5FF] py-20 px-4"
+      id="directions"
+    >
       <div className="flex flex-col gap-2 text-center">
         <h3 className="text-[#252324] text-[36px] font-semibold">
           პოპულარული მიმართულებები

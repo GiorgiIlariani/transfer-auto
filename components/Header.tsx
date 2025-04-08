@@ -7,22 +7,31 @@ import { LanguageSwitcher } from "./LanguageSwitcher";
 import MobileNav from "./MobileNav";
 import { navLinks } from "@/constants";
 import { MdKeyboardArrowRight } from "react-icons/md";
+import { useTranslations } from "next-intl";
+import { Link } from "react-scroll";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const t = useTranslations("Header.navLinks");
+
+  const translatedNavLinks = navLinks.map((link) => ({
+    ...link,
+    label: t(link.id),
+  }));
 
   return (
     <div className="fixed top-0 left-0 w-full z-30">
-      {/* HEADER */}
       <header className="w-full py-5 bg-white bg-opacity-90 px-4">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <Image
-            src="/assets/Logo.png"
-            alt="header logo"
-            width={170}
-            height={20}
-            className="cursor-pointer"
-          />
+          <Link to="home" smooth={true} duration={500}>
+            <Image
+              src="/assets/Logo.png"
+              alt="header logo"
+              width={170}
+              height={20}
+              className="cursor-pointer"
+            />
+          </Link>
 
           <div className="md:hidden">
             <MobileNav
@@ -42,7 +51,7 @@ const Header = () => {
       {isMenuOpen && (
         <div className="w-full bg-white md:hidden">
           <nav className="flex flex-col max-w-7xl mx-auto py-5">
-            {navLinks.map(({ label, href }) => (
+            {translatedNavLinks.map(({ label, href }) => (
               <div
                 className="flex items-center justify-between hover:bg-[#F0EDFF] text-[#252324] hover:text-[#6A04FE] transition-colors cursor-pointer px-4"
                 key={label}
@@ -50,7 +59,7 @@ const Header = () => {
                 <a
                   key={href}
                   href={href}
-                  className="py-3 rounded-[99px] text-base font-medium  "
+                  className="py-3 rounded-[99px] text-base font-medium"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {label}

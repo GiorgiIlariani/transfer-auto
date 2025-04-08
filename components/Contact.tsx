@@ -3,7 +3,10 @@ import Image from "next/image";
 
 const Contact = () => {
   return (
-    <section className="max-w-7xl mx-auto bg-[#F9F5FF] py-20 relative bg-grid-dot px-4">
+    <section
+      className="max-w-7xl mx-auto bg-[#F9F5FF] py-20 relative bg-grid-dot px-4"
+      id="contact"
+    >
       <div className="flex flex-col gap-2 text-center">
         <h3 className="text-[#252324] text-[36px] font-semibold">
           ჩვენ სიამოვნებით მოგისმენთ

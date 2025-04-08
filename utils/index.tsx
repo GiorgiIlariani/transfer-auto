@@ -21,13 +21,19 @@ export function SummaryItem({
 }
 
 export const calculateProgress = (currentStep: string, stepIndex: number) => {
-  const stepOrder = ["select", "details", "summary", "confirmation"];
+  const stepOrder = [
+    "select",
+    "direction",
+    "details",
+    "summary",
+    "confirmation",
+  ];
   const currentIndex = stepOrder.indexOf(currentStep);
 
-  if (currentIndex >= stepIndex || currentIndex === 3) {
+  if (currentIndex >= stepIndex || currentIndex === 4) {
     // Fully filled (100%)
     return "100%";
-  } else if (currentIndex === stepIndex - 1) {
+  } else if (currentIndex === stepIndex - 1 || currentIndex === 3) {
     // Current step, show partial progress (e.g., 10%)
     return "10%";
   }

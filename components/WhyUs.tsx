@@ -4,7 +4,7 @@ import { whyUsOptions } from "@/constants"; // Import the array
 
 const WhyUs = () => {
   return (
-    <section className="w-full py-20 px-4">
+    <section className="w-full py-20 px-4" id="why-us">
       <div className="flex flex-col gap-5 text-start">
         <h3 className="text-[#252324] text-[36px] font-semibold">რატომ ჩვენ</h3>
         <p className="text-lg font-normal text-[#6E7375]">
