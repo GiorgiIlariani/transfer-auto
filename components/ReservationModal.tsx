@@ -18,10 +18,20 @@ import { calculateProgress, SummaryItem } from "@/utils";
 import SearchDirection from "./SearchDirection";
 
 export function ReservationModal() {
-  const [selected, setSelected] = useState("sedan");
-  const [selectedDirection, setSelectedDirection] = useState<string | null>(
-    null
-  );
+  const [selectedTransport, setSelectedTransport] = useState("sedan");
+  const [selectedDirection, setSelectedDirection] = useState<{
+    from: string;
+    to: string;
+  }>({
+    from: "",
+    to: "",
+  });
+  const [personalDetails, setPersonalDetails] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
 
   const [step, setStep] = useState<
     "select" | "direction" | "details" | "confirmation" | "summary"
@@ -71,10 +81,10 @@ export function ReservationModal() {
               {transports.map((option) => (
                 <div
                   key={option.id}
-                  onClick={() => setSelected(option.id)}
+                  onClick={() => setSelectedTransport(option.id)}
                   className={clsx(
                     "flex items-center gap-4 p-4 rounded-xl border-2 cursor-pointer transition",
-                    selected === option.id
+                    selectedTransport === option.id
                       ? "border-[#6A04FE] bg-[#F6F1FF]"
                       : "border-[#EAECF0]"
                   )}
@@ -94,7 +104,7 @@ export function ReservationModal() {
                     </span>
                     <span className="text-sm text-gray-500">{option.desc}</span>
                   </div>
-                  {selected === option.id && (
+                  {selectedTransport === option.id && (
                     <CheckCircle2 className="ml-auto text-[#7933FF]" />
                   )}
                 </div>
@@ -124,11 +134,15 @@ export function ReservationModal() {
                 <div
                   key={direction.from + direction.to}
                   onClick={() =>
-                    setSelectedDirection(direction.from + direction.to)
+                    setSelectedDirection({
+                      from: direction.from,
+                      to: direction.to,
+                    })
                   }
                   className={clsx(
                     "flex items-center gap-4 p-4 rounded-[16px] border cursor-pointer transition",
-                    selectedDirection === direction.from + direction.to
+                    selectedDirection.from === direction.from &&
+                      selectedDirection.to === direction.to
                       ? "border-[#6A04FE] bg-[#F6F1FF]"
                       : "border-[#EAECF0]"
                   )}
@@ -146,9 +160,10 @@ export function ReservationModal() {
                     </p>
                   </div>
 
-                  {selectedDirection === direction.from + direction.to && (
-                    <CheckCircle2 className="ml-auto text-[#7933FF]" />
-                  )}
+                  {selectedDirection.from === direction.from &&
+                    selectedDirection.to === direction.to && (
+                      <CheckCircle2 className="ml-auto text-[#7933FF]" />
+                    )}
                 </div>
               ))}
             </div>
@@ -178,7 +193,12 @@ export function ReservationModal() {
             <h2 className="text-left text-base text-[#101828] pb-6 font-medium">
               შეავსე პირადი დეტალები
             </h2>
-            <PrivateDetailsForm setStep={setStep} />
+            <PrivateDetailsForm
+              setStep={setStep}
+              setPersonalDetails={setPersonalDetails}
+              selectedDirection={selectedDirection}
+              selectedTransport={selectedTransport}
+            />
           </div>
         )}
 
@@ -225,19 +245,26 @@ export function ReservationModal() {
                   <SummaryItem
                     icon={
                       <Image
-                        src="/assets/sedan.png"
+                        src={
+                          transports.find((t) => t.id === selectedTransport)
+                            ?.icon ?? "/assets/sedan.png"
+                        }
                         alt="type"
                         width={37}
                         height={21}
                       />
                     }
                     label="ტრანსპორტის ტიპი"
-                    value="სედანი"
+                    value={
+                      transports.find((t) => t.id === selectedTransport)
+                        ?.label ?? "Unknown"
+                    }
                   />
                   <SummaryItem
                     icon={<TiLocation size={20} />}
                     label="მიმართულება"
-                    value="ფოთი-თბილისი"
+                    value={selectedDirection}
+                    type="destination"
                   />
                   <SummaryItem
                     icon={<TiLocation size={20} />}
@@ -253,17 +280,17 @@ export function ReservationModal() {
                   <SummaryItem
                     icon={<IoPerson size={20} />}
                     label="სრული სახელი"
-                    value="Giorgi Ilariani"
+                    value={personalDetails.name}
                   />
                   <SummaryItem
                     icon={<MdEmail size={20} />}
                     label="ელ-ფოსტა"
-                    value="chikhladzegiorgi6@gmail.com"
+                    value={personalDetails.email}
                   />
                   <SummaryItem
                     icon={<FaPhone size={20} />}
                     label="მობილურის ნომერი"
-                    value="+995568406092"
+                    value={personalDetails.phone}
                   />
                 </div>
               </div>
@@ -274,7 +301,7 @@ export function ReservationModal() {
                 დამატებითი ინფორმაცია
               </h3>
               <div className="w-full h-[134px] bg-[#E0E0E0] rounded-[16px] py-3 px-4">
-                Toyota Prius C 2020 წელი.
+                {personalDetails.message}
               </div>
             </div>
 

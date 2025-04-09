@@ -22,12 +22,28 @@ import { db } from "@/lib/firebase";
 
 const PrivateDetailsForm = ({
   setStep,
+  setPersonalDetails,
+  selectedDirection,
+  selectedTransport,
 }: {
   setStep: Dispatch<
     SetStateAction<
       "details" | "direction" | "select" | "summary" | "confirmation"
     >
   >;
+  setPersonalDetails: Dispatch<
+    SetStateAction<{
+      name: string;
+      email: string;
+      phone: string;
+      message: string;
+    }>
+  >;
+  selectedDirection: {
+    from: string;
+    to: string;
+  };
+  selectedTransport: string;
 }) => {
   const form = useForm<z.infer<typeof privateDetailsFormSchema>>({
     resolver: zodResolver(privateDetailsFormSchema),
@@ -45,8 +61,8 @@ const PrivateDetailsForm = ({
       email: values.email,
       phone: values.mobile,
       carDetails: values.message,
-      // transportType,
-      // destination,
+      transportType: selectedTransport,
+      destination: selectedDirection,
       createdAt: new Date(),
     };
     try {
@@ -56,6 +72,12 @@ const PrivateDetailsForm = ({
       console.error("Error saving to Firebase:", error);
       alert("შეცდომა მონაცემების შენახვისას.");
     }
+    setPersonalDetails({
+      name: values.name,
+      email: values.email,
+      phone: values.mobile || "",
+      message: values.message || "",
+    });
   }
 
   return (

@@ -24,27 +24,27 @@ const PopularDestinations = () => {
           distance={350}
           arrivalTime="1-2 დღე"
           service="ყოველდღიური"
-          price={350}
+          price={300}
           bgColor="#EEE1FE"
           iconColor="#6A04FE"
         />
         <PlanCard
           fromLocation="ფოთი"
-          toLocation="თბილისი"
-          distance={350}
+          toLocation="გორი"
+          distance={700}
           arrivalTime="1-2 დღე"
           service="ყოველდღიური"
-          price={350}
+          price={400}
           bgColor="#E5F0FF"
           iconColor="#0A69FA"
         />
         <PlanCard
-          fromLocation="ფოთი"
+          fromLocation="გორი"
           toLocation="თბილისი"
-          distance={350}
+          distance={200}
           arrivalTime="1-2 დღე"
           service="ყოველდღიური"
-          price={350}
+          price={100}
           bgColor="#D7F5E5"
           iconColor="#038557"
         />

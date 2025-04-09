@@ -4,6 +4,7 @@ import { Button } from "./ui/button";
 import Image from "next/image";
 import { LuArrowRight } from "react-icons/lu";
 import { TiLocation } from "react-icons/ti";
+import ReservationBtn from "./ReservationBtn";
 
 const PlanCard = ({
   distance,
@@ -104,9 +105,7 @@ const PlanCard = ({
           <p className="text-sm text-[#6E7375]">ფასი:</p>
           <p className="text-2xl font-semibold text-[#252324]">${price}</p>
         </div>
-        <Button className="flex-1 bg-[#F0EDFF] text-[#6A04FE] font-medium rounded-full hover:bg-[#F0EDFF] cursor-pointer h-12">
-          დაჯავშნა
-        </Button>
+        <ReservationBtn className="flex-1 bg-[#F0EDFF] text-[#6A04FE] font-medium rounded-full hover:bg-[#F0EDFF] cursor-pointer h-12" />
       </div>
     </div>
   );

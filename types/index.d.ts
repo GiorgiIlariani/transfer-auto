@@ -8,6 +8,7 @@ declare type TransportTypeCardTypes = {
     bg: string;
   };
   id: number;
+  onReserve?: (type: string) => void;
 };
 
 declare type PlanCardProps = {

@@ -2,6 +2,7 @@ import React from "react";
 import { Button } from "./ui/button";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
+import ReservationBtn from "./ReservationBtn";
 
 const TransportTypeCard = ({
   transportType,
@@ -21,10 +22,10 @@ const TransportTypeCard = ({
             <p className="text-[#6E7375] text-sm text-normal">{text}</p>
           </div>
 
-          <Button className="bg-[#F0EDFF] hover:bg-[#F0EDFF]  text-[#7500FF] font-bold text-sm py-3 px-[14px] rounded-full flex items-center gap-1 w-fit h-10">
+          <ReservationBtn className="bg-[#F0EDFF] hover:bg-[#F0EDFF] text-[#7500FF] font-bold text-sm py-3 px-[14px] rounded-full flex items-center gap-1 w-fit h-10">
             დაჯავშნა
             <ArrowRight size={16} />
-          </Button>
+          </ReservationBtn>
         </div>
 
         <div
